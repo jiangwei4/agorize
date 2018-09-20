@@ -38,19 +38,27 @@ class User implements UserInterface
      */
     private $roles = [];
     /**
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Articles", mappedBy="user")
      */
     private $articles;
 
     /**
+     *
      * @ORM\OneToMany(targetEntity="App\Entity\Conges", mappedBy="user", cascade={"remove"})
      */
     private $conges;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Projet", mappedBy="user")
+     */
+    private $projets;
 
     public function __construct()
     {
         $this->articles = new ArrayCollection();
         $this->conges = new ArrayCollection();
+        $this->projets = new ArrayCollection();
         $this->roles = array ('ROLE_USER');
     }
 
@@ -156,6 +164,32 @@ class User implements UserInterface
         return $this;
     }
 
+
+    public function getProjet()
+    {
+        return $this->conges;
+    }
+    public function addProjet(Projet $projet): self
+    {
+        if (!$this->articles->contains($projet)) {
+            $this->articles[] = $projet;
+            $projet->setUser($this);
+        }
+
+        return $this;
+    }
+    public function removeProjet(Projet $projet): self
+    {
+        if ($this->conges->contains($projet)) {
+            $this->conges->removeElement($projet);
+            // set the owning side to null (unless already changed)
+            if ($projet->getUser() === $this) {
+                $projet->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 
 
     public function getSalt()

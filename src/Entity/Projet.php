@@ -7,9 +7,9 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ArticlesRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
  */
-class Articles
+class Projet
 {
     /**
      * @ORM\Id()
@@ -22,22 +22,20 @@ class Articles
      * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
-    private $nom;
+    private $name;
 
     /**
-     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=255)
      */
-    private $text;
+    private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="Articles")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="projet")
      */
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Message", inversedBy="Articles")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Message", inversedBy="projet")
      */
     private $message;
 
@@ -51,30 +49,29 @@ class Articles
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getName(): ?string
     {
-        return $this->nom;
+        return $this->name;
     }
 
-    public function setNom(string $nom): self
+    public function setName(string $name): self
     {
-        $this->nom = $nom;
+        $this->name = $name;
 
         return $this;
     }
 
-    public function getText(): ?string
+    public function getDescription(): ?string
     {
-        return $this->text;
+        return $this->description;
     }
 
-    public function setText(string $text): self
+    public function setDescription(string $description): self
     {
-        $this->text = $text;
+        $this->description = $description;
 
         return $this;
     }
-
     /**
      * @return mixed
      */
@@ -90,6 +87,7 @@ class Articles
     {
         $this->user = $user;
     }
+
     public function getMessage()
     {
         return $this->message;
@@ -98,7 +96,7 @@ class Articles
     {
         if (!$this->message->contains($message)) {
             $this->message[] = $message;
-            $message->setArticles($this);
+            $message->setProjets($this);
         }
 
         return $this;
@@ -108,12 +106,11 @@ class Articles
         if ($this->message->contains($message)) {
             $this->message->removeElement($message);
             // set the owning side to null (unless already changed)
-            if ($message->getArticles() === $this) {
-                $message->setArticles(null);
+            if ($message->getProjets() === $this) {
+                $message->setProjets(null);
             }
         }
 
         return $this;
     }
-
 }
