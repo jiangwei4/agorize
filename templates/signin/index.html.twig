@@ -9,15 +9,15 @@
     </style>
     <br><br>
 
-    <div class="example-wrapper">
+    <div class="example-wrapper" style="text-align: center">
 
 
 
         {{ form_start(form) }}
-        <div class="w3-container w3-red">
-            <h2>Connexion</h2>
+        <div class="w3-container w3-blue"  style="text-align: center">
+            <h2>Bienvenue sur le Dashboard Vie d'Equipe</h2>
         </div>
-
+<br>
         <label class="w3-text"><b> {{ form_label(form.email) }}</b></label>
         <br>{{ form_errors(form.email) }}
         {{ form_widget(form.email) }}
@@ -27,7 +27,7 @@
         <br>{{ form_errors(form.password) }}
         {{ form_widget(form.password) }}
         {{ form_help(form.password) }}
-        <br>
+        <br><br>
 
         {{ form_row(form.submit) }}
 
