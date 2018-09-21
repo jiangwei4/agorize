@@ -22,23 +22,23 @@
             <table></table>
             <!-- <a href="#" class="w3-bar-item"><img src="/img/netflix.png"></a>-->
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <!--  <p>Hello {{ app.user.firstname }}</p>-->
+                <!--  <p>Hello {{ app.user.email }}</p>-->
             {% endif %}
             <a href="/" class="w3-bar-item w3-button">Home</a>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                <a href="/edituser" class="w3-bar-item w3-button">Edit Profil</a>
-                <a href="/createmovie" class="w3-bar-item w3-button">Create Video</a>
-                <a href="/listmovie" class="w3-bar-item w3-button">List Video</a>
+                <a href="/edituser" class="w3-bar-item w3-button">Editer Profile</a>
+                <a href="/createmovie" class="w3-bar-item w3-button">Projets</a>
+                <a href="/listmovie" class="w3-bar-item w3-button">Vie d'équipe</a>
             {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {% if is_granted('ROLE_ADMIN') %}
-                    <a href="/listusers" class="w3-bar-item w3-button">All Users</a>
-                    <a href="/signup" class="w3-bar-item w3-button">Sign up</a>
+                    <a href="/listusers" class="w3-bar-item w3-button">Modifier utilisateur</a>
+                    <a href="/signup" class="w3-bar-item w3-button">Ajouter utilisateur</a>
                 {% endif %}
-                <a href="/logout" class="w3-bar-item w3-button">Log out</a>
+                <a href="/logout" class="w3-bar-item w3-button">Déconnexion</a>
             {% else %}
 
-                <a href="/signin" class="w3-bar-item w3-button">Sign in</a>
+                <a href="/signin" class="w3-bar-item w3-button">connexion</a>
             {% endif %}
         </div>
     </div>
@@ -52,7 +52,7 @@
 
 <br><br><br><br>
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <p>Bonjour: {{ app.user.firstname }} </p>
+    <p>Bonjour: {{ app.user.email }} </p>
 {% endif %}
 
 
