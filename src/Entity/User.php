@@ -129,7 +129,7 @@ class User implements UserInterface
     {
         return $this->articles;
     }
-    public function addArticle(Article $article): self
+    public function addArticle(Articles $article): self
     {
         if (!$this->articles->contains($article)) {
             $this->articles[] = $article;

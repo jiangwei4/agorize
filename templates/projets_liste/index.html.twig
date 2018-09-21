@@ -26,7 +26,8 @@
                     <p>{{ projet.description }}</p>
                 </div>
                 <footer class="w3-container w3-blue">
-
+                    <a href="{{ path('listprojet_remove',{'id':projet.id}) }}"><img height="40px" src="img\supr.png"></a>
+                    <a href="{{ path('listprojet_edite',{'id':projet.id}) }}"><img height="40px" src="img\edit.png"></a>
 
                 </footer>
 
