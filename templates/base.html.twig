@@ -33,10 +33,11 @@
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <a href="/listusers" class="w3-bar-item w3-button">All Users</a>
+                    <a href="/signup" class="w3-bar-item w3-button">Sign up</a>
                 {% endif %}
                 <a href="/logout" class="w3-bar-item w3-button">Log out</a>
             {% else %}
-                <a href="/signup" class="w3-bar-item w3-button">Sign up</a>
+
                 <a href="/signin" class="w3-bar-item w3-button">Sign in</a>
             {% endif %}
         </div>
