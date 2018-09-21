@@ -12,8 +12,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'img/netflix.png',
-        ]);
+      if  ($this->getUser() != null && in_array("ROLE_USER",$this->getUser()->getRoles()) ){
+          return $this->render('home/index.html.twig', [
+              'controller_name' => 'img/netflix.png',
+          ]);
+      } else {
+          return $this->redirect($this->generateUrl('signin'));
+      }
     }
 }
