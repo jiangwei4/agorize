@@ -25,7 +25,7 @@ class User implements UserInterface
      * @Assert\Email()
      * @ORM\Column(type="string", length=255)
      */
-    private $mail;
+    private $email;
 
     /**
      * @Assert\NotBlank()
@@ -67,17 +67,23 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getMail(): ?string
+    /**
+     * @return mixed
+     */
+    public function getEmail()
     {
-        return $this->mail;
+        return $this->email;
     }
 
-    public function setMail(string $mail): self
+    /**
+     * @param mixed $email
+     */
+    public function setEmail($email): void
     {
-        $this->mail = $mail;
-
-        return $this;
+        $this->email = $email;
     }
+
+
 
     public function getPassword(): ?string
     {
@@ -165,11 +171,11 @@ class User implements UserInterface
     }
 
 
-    public function getProjet()
+    public function getProjets()
     {
         return $this->conges;
     }
-    public function addProjet(Projet $projet): self
+    public function addProjets(Projet $projet): self
     {
         if (!$this->articles->contains($projet)) {
             $this->articles[] = $projet;
@@ -178,7 +184,7 @@ class User implements UserInterface
 
         return $this;
     }
-    public function removeProjet(Projet $projet): self
+    public function removeProjets(Projet $projet): self
     {
         if ($this->conges->contains($projet)) {
             $this->conges->removeElement($projet);
