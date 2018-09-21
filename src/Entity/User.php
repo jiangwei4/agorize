@@ -54,6 +54,15 @@ class User implements UserInterface
      */
     private $projets;
 
+    private $firstname;
+
+    private $lastname;
+
+    /**
+     * @Assert\DateTime()
+     */
+    private $birthday;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -195,6 +204,54 @@ class User implements UserInterface
         }
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param mixed $firstname
+     */
+    public function setFirstname($firstname): void
+    {
+        $this->firstname = $firstname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     */
+    public function setLastname($lastname): void
+    {
+        $this->lastname = $lastname;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBirthday()
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * @param mixed $birthday
+     */
+    public function setBirthday($birthday): void
+    {
+        $this->birthday = $birthday;
     }
 
 

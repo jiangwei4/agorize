@@ -35,7 +35,8 @@ class Projet
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Message", inversedBy="projet")
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="projet")
+     *
      */
     private $message;
 

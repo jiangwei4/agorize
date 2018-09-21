@@ -27,13 +27,14 @@
             <a href="/" class="w3-bar-item w3-button">Home</a>
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 <a href="/edituser" class="w3-bar-item w3-button">Editer profile</a>
-                <a href="/createmovie" class="w3-bar-item w3-button">Projets</a>
-                <a href="/listmovie" class="w3-bar-item w3-button">Vie d'équipe</a>
+                <a href="/projets" class="w3-bar-item w3-button">Projets</a>
+                <a href="/vieequipe" class="w3-bar-item w3-button">Vie d'équipe</a>
             {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {% if is_granted('ROLE_ADMIN') %}
                     <a href="/listusers" class="w3-bar-item w3-button">Modifier utilisateur</a>
                     <a href="/signup" class="w3-bar-item w3-button">Ajouter utilisateur</a>
+                    <a href="/projets_create" class="w3-bar-item w3-button">Ajouter un projet</a>
                 {% endif %}
                 <a href="/logout" class="w3-bar-item w3-button">Déconnexion</a>
             {% else %}

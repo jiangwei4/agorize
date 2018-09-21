@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+
+        {% if projets|length < 1 %}
+            <p>Aucun projets</p>
+        {% endif %}
+
+        {% for projet in projets %}
+            <br>
+
+            <div class="w3-card-4" style="width:100%;">
+                <header class="w3-container w3-blue">
+                    <h1>{{ projet.name }}</h1>
+                </header>
+
+                <div class="w3-container">
+                    <p>{{ projet.description }}</p>
+                </div>
+                <footer class="w3-container w3-blue">
+
+
+                </footer>
+
+            </div>
+
+
+
+        {% endfor %}
+
+    </div>
+{% endblock %}

@@ -37,7 +37,8 @@ class Articles
     private $user;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Message", inversedBy="Articles")
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="articles")
+     *
      */
     private $message;
 
